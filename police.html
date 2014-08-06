@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crime map</title>
+    <link href='police.css' rel='stylesheet'>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvRdyhT8xZu2k4lWFEYxxaxlmVzDnIULI"></script>
+    <script src='https://code.jquery.com/jquery-2.0.3.min.js'></script>
+    <script src='./mapScripts.js'></script>
+
+    <script>
+      var geocoder, map, myLatLng;
+      var markers = [];
+      var circles = [];
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+
+  <body>
+    <div id='wrapper'>
+      <section id="left-column">
+        <div id='search-area'>
+          <form id='find-crimes'>
+            <h2>CRIMEWAVE!</h2>
+            <input id='postcode' placeholder='Enter a post code'>
+            <button type='submit'>Load crimes</button>
+          </form>
+        </div>
+
+        <div id='choices-area'>
+          <form id='crime-choices'>
+            <!-- <input type='radio' name='crime-type' value="all-crime" checked='true'>All crime -->
+            <p><input type='radio' name='crime-type' value="anti-social-behaviour" checked="true">Anti-social behaviour<br>
+            <input type='radio' name='crime-type' value="bicycle-theft">Bicycle theft<br>
+            <input type='radio' name='crime-type' value="burglary">Burglary<br>
+            <input type='radio' name='crime-type' value="criminal-damage-arson">Criminal damage arson<br>
+            <input type='radio' name='crime-type' value="drugs">Drugs<br>
+            <input type='radio' name='crime-type' value="other-theft">Other theft<br>
+            <input type='radio' name='crime-type' value="possession-of-weapons">Possession of weapons<br>
+            <input type='radio' name='crime-type' value="public-order">Public order<br>
+            <input type='radio' name='crime-type' value="robbery">Robbery<br>
+            <input type='radio' name='crime-type' value="shoplifting">Shoplifting<br>
+            <input type='radio' name='crime-type' value="theft-from-the-person">Theft from the person<br>
+            <input type='radio' name='crime-type' value="vehicle-crime">Vehicle crime<br>
+            <input type='radio' name='crime-type' value="violent-crime">Violent and sexual offences<br>
+            <input type='radio' name='crime-type' value="other-crime">Other crime
+          </form>
+        </div>
+      </section>
+
+      <section id='map-canvas'></div>
+    </div>
+
+    <script>
+      $(document).ready(function(){
+        $('#find-crimes').on('submit', function(event){
+          event.preventDefault();
+          clearMarkers();
+          clearCircles();
+          addressToCoords();
+        });
+      });
+    </script>
+  
+  </body>
+</html>
