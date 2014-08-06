@@ -1,19 +1,13 @@
 function initialize() {
   geocoder = new google.maps.Geocoder();
   myLatLng = new google.maps.LatLng(51.523076, -0.087065);
-  
+
   var mapOptions = {
     center: myLatLng,
     zoom: 14,
   };
 
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-  
-  // var marker = new google.maps.Marker({
-  //   position: myLatLng,
-  //   title: "Makers Academy",
-  // });
-  // markers.push(marker);
 }
 
 function addressToCoords() {
@@ -55,10 +49,10 @@ function fetchCrimes() {
     crimes.forEach( function(crime) {
       if (crime.category === chosenCrime) {
         var pos = new google.maps.LatLng(crime.location.latitude, crime.location.longitude);
-        var newMarker = new google.maps.Marker({
-          position: pos
+        var marker = new google.maps.Marker({
+          position: pos,
         });
-        markers.push(newMarker);
+        markers.push(marker);
       };
     }); 
     placeMarkers();

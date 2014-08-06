@@ -1,18 +1,31 @@
-html {
-	height: 100%
-}
-
 body {
 	background-image: url('debut_light.png');
 	height: 90%;
+	font-family: arial;
 }
 
 input {
 	margin-bottom: 10px;
+	font-size: 15px;
+	text-align: center;
 }
 
 button {
-	
+	width: 100px;
+  background-color: grey;
+  border: 2px solid white;
+  color: white; /*text colour*/
+  text-decoration: none; /*no underlining*/
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 4px; /*rounded corners*/
+  margin-left: 5px;
+  margin-right: 5px;
+  text-shadow: 0 0 2px rgba(0,0,0, 0.4); /*for readability*/
+}
+
+h1 {
+
 }
 
 #wrapper {
@@ -29,26 +42,21 @@ button {
 
 #left-column {
 	padding: 10px;
-	width: 100%;
-	/*display: flex;
-	display: -webkit-flex;*/
-	flex: 1;
+	width: 200px;
 }
 
 #search-area {
 	margin: 0 auto;
 	text-align: center;
-	/*flex: 1;*/
-}
-
-#choices-area {
-	/*flex: 4;*/
 }
 
 #map-canvas {
 	border-radius: 10px;
-	flex: 5;
+	flex: 1;
 	margin: 0 auto;
-	/*height: 90%;
-	width: 90%;*/
+}
+
+#about {
+	margin: 10px;
+	font-size: 10px;
 }
