@@ -8,6 +8,13 @@ function initialize() {
   };
 
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+  var marker = new google.maps.Marker({
+    animation: google.maps.Animation.BOUNCE,
+    position: myLatLng,
+  });
+  markers.push(marker);
+  placeMarkers();
 }
 
 function addressToCoords() {
