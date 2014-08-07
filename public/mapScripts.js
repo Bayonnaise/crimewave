@@ -4,7 +4,7 @@ function initialize() {
 
   var mapOptions = {
     center: myLatLng,
-    zoom: 14,
+    zoom: 14
   };
 
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
@@ -12,40 +12,46 @@ function initialize() {
   var marker = new google.maps.Marker({
     animation: google.maps.Animation.BOUNCE,
     position: myLatLng,
+    map: map
   });
   markers.push(marker);
-  placeMarkers();
 }
 
 function addressToCoords() {
   var newAddress = document.getElementById("postcode").value;
   geocoder.geocode({'address': newAddress}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
-      myLatLng = results[0].geometry.location
+      myLatLng = results[0].geometry.location;
       map.setCenter(myLatLng);
 
       var marker = new google.maps.Marker({
         animation: google.maps.Animation.BOUNCE,
-        position: myLatLng
+        position: myLatLng,
+        map: map
       });
       markers.push(marker);
 
-      var circle = new google.maps.Circle({
-        center: myLatLng,
-        radius: 1600,
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FF0000',
-        fillOpacity: 0.1
-      });
-      circles.push(circle);
+      placeCircle(myLatLng);
 
       fetchCrimes();
     } else {
       alert("Geocode was not successful for the following reason: " + status);
     }
   });
+}
+
+function placeCircle(center) {
+  var circle = new google.maps.Circle({
+    center: center,
+    radius: 1600,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.1,
+    map: map
+  });
+  circles.push(circle);
 }
 
 function fetchCrimes() {
@@ -58,37 +64,23 @@ function fetchCrimes() {
         var pos = new google.maps.LatLng(crime.location.latitude, crime.location.longitude);
         var marker = new google.maps.Marker({
           position: pos,
+          map: map
         });
         markers.push(marker);
       };
     }); 
-    placeMarkers();
-    placeCircles();
   });
 };
 
-function placeMarkers() {
-  markers.forEach (function (marker) {
-    marker.setMap(map);
+function placeAll(mapElements) {
+  mapElements.forEach (function (element) {
+    element.setMap(map);
   });
 };
 
-function clearMarkers() {
-  markers.forEach (function (marker) {
-    marker.setMap(null);
+function clearAll(mapElements) {
+  mapElements.forEach (function (element) {
+    element.setMap(null);
   });
-  markers = [];
-};
-
-function placeCircles() {
-  circles.forEach (function (circle) {
-    circle.setMap(map);
-  });
-};
-
-function clearCircles() {
-  circles.forEach (function (circle) {
-    circle.setMap(null);
-  });
-  circles = [];
+  mapElements.length = 0;
 };

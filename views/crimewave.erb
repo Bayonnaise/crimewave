@@ -2,11 +2,13 @@
 <html>
   <head>
     <title>Crime map</title>
-    <link href='police.css' rel='stylesheet'>
+    <link href='crimestyle.css' rel='stylesheet'>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvRdyhT8xZu2k4lWFEYxxaxlmVzDnIULI"></script>
     <script src='https://code.jquery.com/jquery-2.0.3.min.js'></script>
     <script src='mapScripts.js'></script>
+    <script src='mustache.js'></script>
+    <meta charset='utf8'>
 
     <script>
       var geocoder, map, myLatLng;
@@ -59,8 +61,8 @@
       $(document).ready(function(){
         $('#find-crimes').on('submit', function(event){
           event.preventDefault();
-          clearMarkers();
-          clearCircles();
+          clearAll(markers);
+          clearAll(circles);
           addressToCoords();
         });
       });
