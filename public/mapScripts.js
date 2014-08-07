@@ -68,7 +68,8 @@ function fetchCrimes() {
         });
         markers.push(marker);
       };
-    }); 
+    });
+    $('#search-button').text('Load crimes'); 
   });
 };
 

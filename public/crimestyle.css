@@ -24,8 +24,8 @@ button {
   text-shadow: 0 0 2px rgba(0,0,0, 0.4); /*for readability*/
 }
 
-h1 {
-
+h2 {
+	font: 'BazarMedium';
 }
 
 #wrapper {

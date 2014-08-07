@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Crime map</title>
+    <title>Crimewave! This used to be such a nice area...</title>
     <link href='crimestyle.css' rel='stylesheet'>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvRdyhT8xZu2k4lWFEYxxaxlmVzDnIULI"></script>
@@ -23,15 +23,14 @@
       <section id="left-column">
         <div id='search-area'>
           <form id='find-crimes'>
-            <h2>CRIMEWAVE!</h2>
+            <h2>CRIMEWAVE</h2>
             <input id='postcode' placeholder='Enter a post code'>
-            <button type='submit'>Load crimes</button>
+            <button id='search-button' type='submit'>Load crimes</button>
           </form>
         </div>
 
         <div id='choices-area'>
           <form id='crime-choices'>
-            <!-- <input type='radio' name='crime-type' value="all-crime" checked='true'>All crime -->
             <p><input type='radio' name='crime-type' value="anti-social-behaviour" checked="true">Anti-social behaviour<br>
             <input type='radio' name='crime-type' value="bicycle-theft">Bicycle theft<br>
             <input type='radio' name='crime-type' value="burglary">Burglary<br>
@@ -45,7 +44,8 @@
             <input type='radio' name='crime-type' value="theft-from-the-person">Theft from the person<br>
             <input type='radio' name='crime-type' value="vehicle-crime">Vehicle crime<br>
             <input type='radio' name='crime-type' value="violent-crime">Violent and sexual offences<br>
-            <input type='radio' name='crime-type' value="other-crime">Other crime
+            <input type='radio' name='crime-type' value="other-crime">Other crime<br>
+            <!-- <input type='radio' name='crime-type' value="all-crime">All crime <small>(slow!)</small> -->
           </form>
         </div>
 
@@ -61,6 +61,7 @@
       $(document).ready(function(){
         $('#find-crimes').on('submit', function(event){
           event.preventDefault();
+          $('#search-button').text('Searching...');
           clearAll(markers);
           clearAll(circles);
           addressToCoords();
