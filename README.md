@@ -1,12 +1,7 @@
 # Learning to use APIs
+**A one-day experiment**
 
-Screenshot
---
-
-![Image](https://github.com/Bayonnaise/playing-with-APIs/blob/master/Crimewave.png)
-
-Objectives
---
+####Objectives
 
 To experiment with APIs, AJAX, JavaScript and JQuery, I used Google Maps along with an unofficial police crime data API to build Crimewave.
 
@@ -15,3 +10,6 @@ Crimewave shows you all crimes in the past month within 1km of your chosen postc
 Try the live site here:
 http://crimewave.herokuapp.com/
 
+####Screenshot
+
+![Image](https://github.com/Bayonnaise/playing-with-APIs/blob/master/Crimewave.png)
