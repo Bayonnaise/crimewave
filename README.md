@@ -12,4 +12,4 @@ http://crimewave.herokuapp.com/
 
 ####Screenshot
 
-![Image](https://github.com/Bayonnaise/playing-with-APIs/blob/master/Crimewave.png)
+![Image](/Crimewave.png)
