@@ -1,4 +1,4 @@
-# Learning to use APIs
+# Crimewave: an API experiment
 **A one-day experiment**
 
 ####Objectives
